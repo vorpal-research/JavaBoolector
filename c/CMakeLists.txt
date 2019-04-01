@@ -7,34 +7,6 @@ find_package(JNI REQUIRED)
 include_directories(${JNI_INCLUDE_DIRS})
 
 set(BOOLECTOR_DIR ${PROJECT_SOURCE_DIR}/boolector)
-
-
-execute_process(
-        COMMAND git submodule init
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
-execute_process(
-        COMMAND git submodule update
-        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
-execute_process(
-        COMMAND ./contrib/setup-lingeling.sh
-        WORKING_DIRECTORY ${BOOLECTOR_DIR}
-)
-execute_process(
-        COMMAND ./contrib/setup-btor2tools.sh
-        WORKING_DIRECTORY ${BOOLECTOR_DIR}
-)
-execute_process(
-        COMMAND ./configure.sh --shared
-        WORKING_DIRECTORY ${BOOLECTOR_DIR}
-)
-execute_process(
-        COMMAND make
-        WORKING_DIRECTORY ${BOOLECTOR_DIR}/build
-)
-
-
 set(BOOLECTOR_INCLUDE_DIRS ${BOOLECTOR_DIR}/src)
 set(BOOLECTOR_INCLUDE_LIB ${BOOLECTOR_DIR}/build/lib)
 include_directories(${BOOLECTOR_INCLUDE_DIRS})
