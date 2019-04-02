@@ -1,7 +1,8 @@
 
 public class JavaBoolector {
     static {
-        System.loadLibrary("JavaBoolector");
+        String root = System.getProperty("user.dir");
+        System.load(root+"/../c/lib/libJavaBoolector.so");
     }
 
     private static final int width = 8;
