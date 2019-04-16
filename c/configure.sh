@@ -1,8 +1,6 @@
 #!/bin/bash
 
 boolector=$(pwd)
-echo "$boolector"
-ls
 git submodule init
 git submodule update
 
