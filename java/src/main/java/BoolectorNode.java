@@ -24,13 +24,13 @@ public class BoolectorNode extends BoolectorObject{
     }
 
     BitvecNode toBitvecNode() {
-       // if (isBitvec) ...
+       // if (isBitvec) .. .
         return new BitvecNode(ref);
     }
 
     BitvecNode not() {
         return new BitvecNode(Native.not(ref));
-    }65-
+    }
 
     BitvecNode add(BitvecNode bvNode) {
         return new BitvecNode(Native.add(ref, bvNode.ref));
