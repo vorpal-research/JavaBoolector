@@ -1,0 +1,13 @@
+*~
+*.log
+*.iml
+*.class
+*.cmake
+*.so
+/c/CMakeFiles
+*/.idea
+*.txt
+!CMakeLists.txt
+/c/Makefile
+/java/target
+
