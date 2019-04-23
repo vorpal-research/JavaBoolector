@@ -65,6 +65,14 @@ JNIEXPORT jboolean JNICALL Java_Native_isBitvecSort
 
 /*
  * Class:     Native
+ * Method:    isArraySort
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_Native_isArraySort
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
  * Method:    getWidth
  * Signature: (J)I
  */
@@ -254,6 +262,206 @@ JNIEXPORT jlong JNICALL Java_Native_srl
  */
 JNIEXPORT jlong JNICALL Java_Native_sra
   (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    implies
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_implies
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    iff
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_iff
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    concat
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_concat
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    cond
+ * Signature: (JJJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_cond
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    zero
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_zero
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    constBitvec
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_constBitvec
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     Native
+ * Method:    isBoolSort
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_Native_isBoolSort
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    constNodeTrue
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_Native_constNodeTrue
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     Native
+ * Method:    constNodeFalse
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_Native_constNodeFalse
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     Native
+ * Method:    getSort
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_getSort
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    getId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_Native_getId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    getSymbol
+ * Signature: (J)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_Native_getSymbol
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    simplify
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_Native_simplify
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     Native
+ * Method:    constInt
+ * Signature: (IJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_constInt
+  (JNIEnv *, jclass, jint, jlong);
+
+/*
+ * Class:     Native
+ * Method:    sext
+ * Signature: (JI)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_sext
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     Native
+ * Method:    uext
+ * Signature: (JI)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_uext
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     Native
+ * Method:    slice
+ * Signature: (JII)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_slice
+  (JNIEnv *, jclass, jlong, jint, jint);
+
+/*
+ * Class:     Native
+ * Method:    arraySort
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_arraySort
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    array
+ * Signature: (JLjava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_array
+  (JNIEnv *, jclass, jlong, jstring);
+
+/*
+ * Class:     Native
+ * Method:    read
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_read
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    write
+ * Signature: (JJJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_write
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     Native
+ * Method:    param
+ * Signature: (JLjava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_param
+  (JNIEnv *, jclass, jlong, jstring);
+
+/*
+ * Class:     Native
+ * Method:    fun
+ * Signature: ([JIJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_fun
+  (JNIEnv *, jclass, jlongArray, jint, jlong);
+
+/*
+ * Class:     Native
+ * Method:    apply
+ * Signature: ([JIJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_apply
+  (JNIEnv *, jclass, jlongArray, jint, jlong);
+
+/*
+ * Class:     Native
+ * Method:    printModel
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_Native_printModel
+  (JNIEnv *, jclass);
 
 #ifdef __cplusplus
 }
