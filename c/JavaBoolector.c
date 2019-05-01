@@ -5,11 +5,14 @@
 #include "btoropt.h"
 #include <stdio.h>
 #include <btorlog.h>
+#include <stdlib.h>
 
 Btor *btor;
 
+
 JNIEXPORT void JNICALL Java_Native_btor(JNIEnv *env, jobject jobj) {
     btor = boolector_new();
+    boolector_set_opt  ( btor ,  BTOR_OPT_MODEL_GEN,  1);
 }
 
 JNIEXPORT void JNICALL Java_Native_assertForm(JNIEnv *env, jobject jobj, jlong jnode_ref) {
@@ -26,7 +29,6 @@ JNIEXPORT jint JNICALL Java_Native_simplify(JNIEnv *env, jobject jobj) {
 }
 
 JNIEXPORT void JNICALL Java_Native_printModel(JNIEnv *env, jobject jobj) {
-    int i = 5;
     boolector_print_model(btor,"smt2",stdout);
 }
 
@@ -59,6 +61,21 @@ JNIEXPORT jlong JNICALL Java_Native_constBitvec(JNIEnv *env, jobject jobj, jstri
     (*env) -> ReleaseStringUTFChars(env, jsymbol, bits);
     return ans;
 }
+
+JNIEXPORT jlong JNICALL Java_Native_constLong(JNIEnv *env, jobject jobj, jstring jsymbol) {
+    BoolectorSort sort = boolector_bitvec_sort(btor,64);
+    const char *bits = (*env)->GetStringUTFChars(env,jsymbol,0);
+    jlong ans = (jlong) boolector_constd(btor,sort,bits);
+    (*env) -> ReleaseStringUTFChars(env, jsymbol, bits);
+    return ans;
+}
+
+JNIEXPORT jstring JNICALL Java_Native_getBits(JNIEnv *env, jobject jobj, jlong jnode_ref) {
+    BoolectorNode* node = (BoolectorNode*) jnode_ref;
+    const char* bits = boolector_get_bits(btor, node);
+    return (*env) -> NewStringUTF(env, bits);
+}
+
 
 JNIEXPORT jlong JNICALL Java_Native_constNodeTrue(JNIEnv *env, jobject jobj) {
     return (jlong) boolector_true(btor);
@@ -351,6 +368,18 @@ JNIEXPORT jlong JNICALL Java_Native_fun(JNIEnv *env, jobject jobj, jlongArray jp
     return ans;
 }
 
+JNIEXPORT jlong JNICALL Java_Native_forAll(JNIEnv *env, jobject jobj, jlongArray jparams, jint jlength, jlong body_node_ref) {
+    BoolectorNode* body_node = (BoolectorNode*) body_node_ref;
+    uint32_t size = (uint32_t) jlength;
+    long* ref_params=(*env) -> GetLongArrayElements(env,jparams,0);
+    BoolectorNode** params= ref_array_to_type(ref_params,size);
+    jlong ans =(jlong) boolector_forall(btor, params, (uint32_t) size, body_node);
+    (*env) -> ReleaseLongArrayElements(env,jparams,ref_params,0);
+    free(params);
+    return ans;
+}
+
+
 JNIEXPORT jlong JNICALL Java_Native_apply(JNIEnv *env, jobject jobj,jlongArray jargs, jint jlength, jlong fun_node_ref) {
     BoolectorNode* fun_node = (BoolectorNode*) fun_node_ref;
     uint32_t size = (uint32_t) jlength;
@@ -361,5 +390,56 @@ JNIEXPORT jlong JNICALL Java_Native_apply(JNIEnv *env, jobject jobj,jlongArray j
     free(args);
     return ans;
 }
+
+JNIEXPORT jint JNICALL Java_Native_kindNode(JNIEnv *env, jobject jobj, jlong jnode_ref) {
+    BoolectorNode* node =(BoolectorNode*) jnode_ref;
+    BoolectorSort  sort = boolector_get_sort(btor,node);
+    bool isBitvecSort= boolector_is_bitvec_sort(btor,sort);
+    bool isBoolSort = isBitvecSort && boolector_get_width(btor, node)==1;
+    if (boolector_is_const(btor,node)) return isBoolSort ? 0 : 1;
+    if (boolector_is_array(btor,node)) return 2;
+    if (isBoolSort) return 3;
+    if (isBitvecSort) return 4;
+    return 5;
+}
+
+JNIEXPORT jlong JNICALL Java_Native_writerInArray(JNIEnv *env, jobject jobj,
+        jlong jsort_index_ref, jlong jsort_elements_ref, jstring jsymbol, jlongArray elements_ref, jint jlength) {
+    BoolectorSort sort_index = (BoolectorSort) jsort_index_ref;
+    BoolectorSort sort_elements = (BoolectorSort) jsort_elements_ref;
+    BoolectorSort sort_array = boolector_array_sort(btor,sort_index,sort_elements);
+    const char *str = (*env)->GetStringUTFChars(env, jsymbol, 0);
+    BoolectorNode* array;
+
+    if (strncmp(str, "nullINc", 7) == 0) array = boolector_array(btor,sort_array,NULL);
+    else array = boolector_array(btor,sort_array,str);
+
+    uint32_t size = (uint32_t) jlength;
+    long* ref_elements=(*env) -> GetLongArrayElements(env,elements_ref,0);
+    BoolectorNode** elements= ref_array_to_type(ref_elements,size);
+    for (int i= 0;i<size;i++) array = boolector_write(btor,array,boolector_int(btor, i, sort_index), elements[i]);
+
+    (*env) -> ReleaseLongArrayElements(env,elements_ref,ref_elements,0);
+    (*env)->ReleaseStringUTFChars(env,jsymbol,str);
+    free(elements);
+    return (jlong) array;
+}
+
+
+JNIEXPORT jboolean JNICALL Java_Native_boolectorAssert(JNIEnv *env, jobject jobj,jstring jans, jlong jnode_ref) {
+    BoolectorNode* node = (BoolectorNode*) jnode_ref;
+    const char *ans = (*env)->GetStringUTFChars(env, jans, 0);
+    const char *str = boolector_bv_assignment(btor,node);
+    bool a = strncmp(str, ans, boolector_get_width(btor,node)) == 0;
+        if (!a) printf("Expect:\n %s\n JavaBoolector:\n%s",ans, str);
+    boolector_free_bv_assignment(btor,str);
+    (*env)->ReleaseStringUTFChars(env,jans,ans);
+    fflush(stdout);
+    return (jboolean) a;
+}
+
+
+
+
 
 

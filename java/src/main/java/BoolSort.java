@@ -1,4 +1,4 @@
-public class BoolSort extends BoolectorSort {
+class BoolSort extends BoolectorSort {
     BoolSort(long ref) {
         super(ref);
     }
@@ -6,6 +6,4 @@ public class BoolSort extends BoolectorSort {
     static BoolSort boolSort() {
         return new BoolSort(Native.bitvecSort(1));
     }
-
-    // isBoolSort???
 }

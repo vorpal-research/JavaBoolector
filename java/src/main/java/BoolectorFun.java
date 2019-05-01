@@ -12,6 +12,7 @@ class BoolectorFun extends BoolectorObject {
         FuncParam(long ref) {
             super(ref);
         }
+
         static FuncParam param(BoolectorSort sort, String name) {
             return new FuncParam(Native.param(sort.ref, name));
         }

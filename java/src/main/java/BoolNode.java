@@ -1,9 +1,9 @@
-public class BoolNode extends BoolectorNode {
+class BoolNode extends BoolectorNode {
     BoolNode(long ref) {
         super(ref);
     }
 
-    BoolNode constBool(boolean bool) {
+    static BoolNode constBool(boolean bool) {
         return new BoolNode(bool ? Native.constNodeTrue() : Native.constNodeFalse());
     }
 
@@ -21,10 +21,6 @@ public class BoolNode extends BoolectorNode {
 
     BoolNode not() {
         return new BoolNode(Native.not(ref));
-    }
-
-    BoolNode neg() {
-        return new BoolNode(Native.neg(ref));
     }
 
     BoolNode implies(BoolNode boolNode) {

@@ -16,6 +16,21 @@ class BoolectorSort extends BoolectorObject {
         return Native.isArraySort(ref);
     }
 
+    BitvecSort toBitvecSort() {
+        if (isArraySort()) throw new ClassCastException();
+        else return new BitvecSort(ref);
+    }
+
+    BoolSort toBooleSort() {
+        if (isBoolSort()) return new BoolSort(ref);
+        else throw new ClassCastException();
+    }
+
+    ArraySort toArraySort() {
+        if (isArraySort()) return new ArraySort(ref);
+        else throw new ClassCastException();
+    }
+
     void release() {
         Native.releaseSort(ref);
     }

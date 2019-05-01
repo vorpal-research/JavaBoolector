@@ -1,4 +1,4 @@
-public class BoolectorNode extends BoolectorObject {
+class BoolectorNode extends BoolectorObject {
 
     BoolectorNode(long ref) {
         super(ref);
@@ -8,7 +8,7 @@ public class BoolectorNode extends BoolectorObject {
         Native.releaseNode(ref);
     }
 
-    public BoolectorNode copy() {
+    BoolectorNode copy() {
         return new BoolectorNode(Native.copy(ref));
     }
 
@@ -36,13 +36,41 @@ public class BoolectorNode extends BoolectorObject {
         Native.assertForm(ref);
     }
 
+    //dsfjsklxfjksdljfklsdjfklsdjfklsjfkls
     BitvecNode toBitvecNode() {
-        // if (!isArray) .. .
+        if (isArrayNode()) throw new ClassCastException();
         return new BitvecNode(ref);
     }
 
     BoolNode toBoolNode() {
-        return new BoolNode(ref);
+        if (isBoolConst() || isBoolNode()) return new BoolNode(ref);
+        else throw new ClassCastException();
     }
+
+    ArrayNode toArrayNode() {
+        if (isArrayNode()) return new ArrayNode(ref);
+        else throw new ClassCastException();
+    }
+
+    boolean isBoolConst() {
+        return Native.kindNode(ref) == 0;
+    }
+
+    boolean isBitvecConst() {
+        return Native.kindNode(ref) == 1;
+    }
+
+    boolean isArrayNode() {
+        return Native.kindNode(ref) == 2;
+    }
+
+    boolean isBoolNode() {
+        return Native.kindNode(ref) == 3;
+    }
+
+    boolean isBitvecNode() {
+        return Native.kindNode(ref) == 4;
+    }
+
 
 }

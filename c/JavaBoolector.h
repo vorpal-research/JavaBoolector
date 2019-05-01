@@ -463,6 +463,54 @@ JNIEXPORT jlong JNICALL Java_Native_apply
 JNIEXPORT void JNICALL Java_Native_printModel
   (JNIEnv *, jclass);
 
+/*
+ * Class:     Native
+ * Method:    getBits
+ * Signature: (J)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_Native_getBits
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    constLong
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_constLong
+  (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     Native
+ * Method:    forAll
+ * Signature: ([JIJ)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_forAll
+  (JNIEnv *, jclass, jlongArray, jint, jlong);
+
+/*
+ * Class:     Native
+ * Method:    boolectorAssert
+ * Signature: (Ljava/lang/String;J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_Native_boolectorAssert
+  (JNIEnv *, jclass, jstring, jlong);
+
+/*
+ * Class:     Native
+ * Method:    kindNode
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_Native_kindNode
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     Native
+ * Method:    writerInArray
+ * Signature: (JJLjava/lang/String;[JI)J
+ */
+JNIEXPORT jlong JNICALL Java_Native_writerInArray
+  (JNIEnv *, jclass, jlong, jlong, jstring, jlongArray, jint);
+
 #ifdef __cplusplus
 }
 #endif

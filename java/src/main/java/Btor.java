@@ -1,7 +1,7 @@
-public class Btor {
+class Btor {
     static {
         String root = System.getProperty("user.dir");
-        System.load(root+"/../c/lib/libJavaBoolector.so");
+        System.load(root + "/../c/lib/libJavaBoolector.so");
     }
 
     static void btor() {
@@ -15,5 +15,4 @@ public class Btor {
     static void printModel() {
         Native.printModel();
     }
-
 }

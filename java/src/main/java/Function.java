@@ -6,26 +6,22 @@ class Function extends BoolectorFun {
         this.params = params;
     }
 
-    BoolectorNode apply(BoolectorNode ... argNodesFunc) {
+    BoolectorNode apply(BoolectorNode... argNodesFunc) {
         long[] argNodes = toLong(argNodesFunc);
-        return new BoolectorNode(Native.apply(argNodes,argNodes.length,ref));
+        return new BoolectorNode(Native.apply(argNodes, argNodes.length, ref));
     }
 
     long[] getParams() {
         return params;
     }
 
-    static Function func( BoolectorNode nodeBody,FuncParam ... func_params) {
+    static Function func(BoolectorNode nodeBody, FuncParam... func_params) {
         long[] params = toLong(func_params);
         return new Function(Native.fun(params, params.length, nodeBody.ref), params);
     }
 
-    static private long[] toLong(BoolectorObject[] params) {
-        int size = params.length;
-        long[] toLong = new long[size];
-        for (int i = 0; i < size; i++) {
-            toLong[i] = params[i].ref;
-        }
-        return toLong;
+    static Function forAll(BoolectorNode nodeBody, FuncParam... func_params) {
+        long[] params = toLong(func_params);
+        return new Function(Native.forAll(params, params.length, nodeBody.ref), params);
     }
 }

@@ -4,7 +4,7 @@ public class ArraySort extends BoolectorSort {
         super(ref);
     }
 
-    static ArraySort arraySort(BoolectorSort index,BoolectorSort element) {
-        return new ArraySort(Native.arraySort(index.ref,element.ref));
+    static ArraySort arraySort(BoolectorSort index, BoolectorSort element) {
+        return new ArraySort(Native.arraySort(index.ref, element.ref));
     }
 }

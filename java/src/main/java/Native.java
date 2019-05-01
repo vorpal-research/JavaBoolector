@@ -1,10 +1,10 @@
-public final class Native {
+final class Native {
 
     public static native void btor();
 
     public static native void btorRelease();
 
-    public static native long var(long ref,String name);
+    public static native long var(long ref, String name);
 
     public static native void releaseNode(long ref);
 
@@ -104,7 +104,7 @@ public final class Native {
 
     public static native long read(long arrayRef, long indexRef);
 
-    public static native long write(long arrayRef, long indexRef,long valueRef);
+    public static native long write(long arrayRef, long indexRef, long valueRef);
 
     public static native long param(long ref, String name);
 
@@ -113,4 +113,16 @@ public final class Native {
     public static native long apply(long[] argNodes, int length, long ref);
 
     public static native void printModel();
+
+    public static native String getBits(long ref);
+
+    public static native long constLong(String value);
+
+    public static native long forAll(long[] params, int length, long ref);
+
+    public static native boolean boolectorAssert(String ans, long ref);
+
+    public static native int kindNode(long ref);
+
+    public static native long writerInArray(long refIndex, long refElements, String name, long[] toLong, int length);
 }

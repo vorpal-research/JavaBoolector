@@ -16,19 +16,23 @@ class BitvecNode extends BoolectorNode {
     }
 
     static BitvecNode constInt(int value, BitvecSort sort) {
-        return new BitvecNode(Native.constInt(value,sort.ref));
+        return new BitvecNode(Native.constInt(value, sort.ref));
+    }
+
+    static BitvecNode constLong(long value) {
+        return new BitvecNode(Native.constLong(String.valueOf(value)));
     }
 
     BitvecNode sext(int width) {
-        return new BitvecNode(Native.sext(ref,width));
+        return new BitvecNode(Native.sext(ref, width));
     }
 
     BitvecNode uext(int width) {
-        return new BitvecNode(Native.uext(ref,width));
+        return new BitvecNode(Native.uext(ref, width));
     }
 
-    BitvecNode slice(int upper,int lower) {
-        return new BitvecNode(Native.slice(ref,upper,lower));
+    BitvecNode slice(int upper, int lower) {
+        return new BitvecNode(Native.slice(ref, upper, lower));
     }
 
     BitvecNode not() {
@@ -111,5 +115,8 @@ class BitvecNode extends BoolectorNode {
         return new BitvecNode(Native.concat(ref, bvNode.ref));
     }
 
+    String getBits() {
+        return Native.getBits(ref);
+    }
 
 }

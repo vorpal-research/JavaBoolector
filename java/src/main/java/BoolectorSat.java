@@ -5,11 +5,11 @@ class BoolectorSat {
     static final int UNKNOWN = 0;
 
     static int simplify() {
-        return  Native.simplify();
+        return Native.simplify();
     }
 
     static int getBoolectorSat() {
-     return Native.getSat();
+        return Native.getSat();
     }
 }
 

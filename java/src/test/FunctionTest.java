@@ -12,7 +12,10 @@ public class FunctionTest {
         BitvecNode y = BitvecNode.var(sort, "nullINc");
         BitvecNode oldX = x.copy().toBitvecNode();
         BitvecNode oldY = y.copy().toBitvecNode();
-
+        BitvecNode a= BitvecNode.constInt(10,sort);
+        BitvecNode b = BitvecNode.constInt(20, sort);
+        BitvecNode ab = a.add(b);
+        System.out.println(ab.getBits());
         BoolSort boolSort = BoolSort.boolSort();
         BitvecNode temp = x.add(y);
         BoolectorFun.FuncParam firstParam = BoolectorFun.FuncParam.param(sort,"nullINc");
