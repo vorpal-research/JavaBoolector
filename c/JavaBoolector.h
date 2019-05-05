@@ -13,7 +13,7 @@ extern "C" {
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_Native_btor
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -21,7 +21,7 @@ JNIEXPORT void JNICALL Java_Native_btor
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_Native_btorRelease
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -29,7 +29,7 @@ JNIEXPORT void JNICALL Java_Native_btorRelease
  * Signature: (JLjava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_Native_var
-  (JNIEnv *, jclass, jlong, jstring);
+        (JNIEnv *, jclass, jlong, jstring);
 
 /*
  * Class:     Native
@@ -37,7 +37,7 @@ JNIEXPORT jlong JNICALL Java_Native_var
  * Signature: (J)V
  */
 JNIEXPORT void JNICALL Java_Native_releaseNode
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -45,7 +45,7 @@ JNIEXPORT void JNICALL Java_Native_releaseNode
  * Signature: (I)J
  */
 JNIEXPORT jlong JNICALL Java_Native_bitvecSort
-  (JNIEnv *, jclass, jint);
+        (JNIEnv *, jclass, jint);
 
 /*
  * Class:     Native
@@ -53,7 +53,7 @@ JNIEXPORT jlong JNICALL Java_Native_bitvecSort
  * Signature: (J)V
  */
 JNIEXPORT void JNICALL Java_Native_releaseSort
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -61,7 +61,7 @@ JNIEXPORT void JNICALL Java_Native_releaseSort
  * Signature: (J)Z
  */
 JNIEXPORT jboolean JNICALL Java_Native_isBitvecSort
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -69,7 +69,7 @@ JNIEXPORT jboolean JNICALL Java_Native_isBitvecSort
  * Signature: (J)Z
  */
 JNIEXPORT jboolean JNICALL Java_Native_isArraySort
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -77,7 +77,7 @@ JNIEXPORT jboolean JNICALL Java_Native_isArraySort
  * Signature: (J)I
  */
 JNIEXPORT jint JNICALL Java_Native_getWidth
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -85,7 +85,7 @@ JNIEXPORT jint JNICALL Java_Native_getWidth
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_Native_not
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -93,7 +93,7 @@ JNIEXPORT jlong JNICALL Java_Native_not
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_add
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -101,7 +101,7 @@ JNIEXPORT jlong JNICALL Java_Native_add
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_and
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -109,7 +109,7 @@ JNIEXPORT jlong JNICALL Java_Native_and
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_or
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -117,7 +117,7 @@ JNIEXPORT jlong JNICALL Java_Native_or
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_xor
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -125,7 +125,7 @@ JNIEXPORT jlong JNICALL Java_Native_xor
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_Native_neg
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -133,7 +133,7 @@ JNIEXPORT jlong JNICALL Java_Native_neg
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_eq
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -141,7 +141,7 @@ JNIEXPORT jlong JNICALL Java_Native_eq
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_Native_copy
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -149,7 +149,7 @@ JNIEXPORT jlong JNICALL Java_Native_copy
  * Signature: (J)V
  */
 JNIEXPORT void JNICALL Java_Native_assertForm
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_Native_assertForm
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_Native_getSat
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -165,7 +165,7 @@ JNIEXPORT jint JNICALL Java_Native_getSat
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sub
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -173,7 +173,7 @@ JNIEXPORT jlong JNICALL Java_Native_sub
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_mul
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -181,7 +181,7 @@ JNIEXPORT jlong JNICALL Java_Native_mul
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sdiv
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -189,7 +189,7 @@ JNIEXPORT jlong JNICALL Java_Native_sdiv
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_udiv
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -197,7 +197,7 @@ JNIEXPORT jlong JNICALL Java_Native_udiv
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_smod
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -205,7 +205,7 @@ JNIEXPORT jlong JNICALL Java_Native_smod
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_urem
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -213,7 +213,7 @@ JNIEXPORT jlong JNICALL Java_Native_urem
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sgt
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -221,7 +221,7 @@ JNIEXPORT jlong JNICALL Java_Native_sgt
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sgte
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -229,7 +229,7 @@ JNIEXPORT jlong JNICALL Java_Native_sgte
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_slt
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -237,7 +237,7 @@ JNIEXPORT jlong JNICALL Java_Native_slt
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_slte
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -245,7 +245,7 @@ JNIEXPORT jlong JNICALL Java_Native_slte
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sll
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -253,7 +253,7 @@ JNIEXPORT jlong JNICALL Java_Native_sll
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_srl
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -261,7 +261,7 @@ JNIEXPORT jlong JNICALL Java_Native_srl
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sra
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -269,7 +269,7 @@ JNIEXPORT jlong JNICALL Java_Native_sra
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_implies
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -277,7 +277,7 @@ JNIEXPORT jlong JNICALL Java_Native_implies
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_iff
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -285,7 +285,7 @@ JNIEXPORT jlong JNICALL Java_Native_iff
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_concat
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -293,7 +293,7 @@ JNIEXPORT jlong JNICALL Java_Native_concat
  * Signature: (JJJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_cond
-  (JNIEnv *, jclass, jlong, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     Native
@@ -301,7 +301,7 @@ JNIEXPORT jlong JNICALL Java_Native_cond
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_Native_zero
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -309,7 +309,7 @@ JNIEXPORT jlong JNICALL Java_Native_zero
  * Signature: (Ljava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_Native_constBitvec
-  (JNIEnv *, jclass, jstring);
+        (JNIEnv *, jclass, jstring);
 
 /*
  * Class:     Native
@@ -317,7 +317,7 @@ JNIEXPORT jlong JNICALL Java_Native_constBitvec
  * Signature: (J)Z
  */
 JNIEXPORT jboolean JNICALL Java_Native_isBoolSort
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -325,7 +325,7 @@ JNIEXPORT jboolean JNICALL Java_Native_isBoolSort
  * Signature: ()J
  */
 JNIEXPORT jlong JNICALL Java_Native_constNodeTrue
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -333,7 +333,7 @@ JNIEXPORT jlong JNICALL Java_Native_constNodeTrue
  * Signature: ()J
  */
 JNIEXPORT jlong JNICALL Java_Native_constNodeFalse
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -341,7 +341,7 @@ JNIEXPORT jlong JNICALL Java_Native_constNodeFalse
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_Native_getSort
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -349,7 +349,7 @@ JNIEXPORT jlong JNICALL Java_Native_getSort
  * Signature: (J)I
  */
 JNIEXPORT jint JNICALL Java_Native_getId
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -357,7 +357,7 @@ JNIEXPORT jint JNICALL Java_Native_getId
  * Signature: (J)Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_Native_getSymbol
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -365,7 +365,7 @@ JNIEXPORT jstring JNICALL Java_Native_getSymbol
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_Native_simplify
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -373,7 +373,7 @@ JNIEXPORT jint JNICALL Java_Native_simplify
  * Signature: (IJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_constInt
-  (JNIEnv *, jclass, jint, jlong);
+        (JNIEnv *, jclass, jint, jlong);
 
 /*
  * Class:     Native
@@ -381,7 +381,7 @@ JNIEXPORT jlong JNICALL Java_Native_constInt
  * Signature: (JI)J
  */
 JNIEXPORT jlong JNICALL Java_Native_sext
-  (JNIEnv *, jclass, jlong, jint);
+        (JNIEnv *, jclass, jlong, jint);
 
 /*
  * Class:     Native
@@ -389,7 +389,7 @@ JNIEXPORT jlong JNICALL Java_Native_sext
  * Signature: (JI)J
  */
 JNIEXPORT jlong JNICALL Java_Native_uext
-  (JNIEnv *, jclass, jlong, jint);
+        (JNIEnv *, jclass, jlong, jint);
 
 /*
  * Class:     Native
@@ -397,7 +397,7 @@ JNIEXPORT jlong JNICALL Java_Native_uext
  * Signature: (JII)J
  */
 JNIEXPORT jlong JNICALL Java_Native_slice
-  (JNIEnv *, jclass, jlong, jint, jint);
+        (JNIEnv *, jclass, jlong, jint, jint);
 
 /*
  * Class:     Native
@@ -405,7 +405,7 @@ JNIEXPORT jlong JNICALL Java_Native_slice
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_arraySort
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -413,7 +413,7 @@ JNIEXPORT jlong JNICALL Java_Native_arraySort
  * Signature: (JLjava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_Native_array
-  (JNIEnv *, jclass, jlong, jstring);
+        (JNIEnv *, jclass, jlong, jstring);
 
 /*
  * Class:     Native
@@ -421,7 +421,7 @@ JNIEXPORT jlong JNICALL Java_Native_array
  * Signature: (JJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_read
-  (JNIEnv *, jclass, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     Native
@@ -429,7 +429,7 @@ JNIEXPORT jlong JNICALL Java_Native_read
  * Signature: (JJJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_write
-  (JNIEnv *, jclass, jlong, jlong, jlong);
+        (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     Native
@@ -437,7 +437,7 @@ JNIEXPORT jlong JNICALL Java_Native_write
  * Signature: (JLjava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_Native_param
-  (JNIEnv *, jclass, jlong, jstring);
+        (JNIEnv *, jclass, jlong, jstring);
 
 /*
  * Class:     Native
@@ -445,7 +445,7 @@ JNIEXPORT jlong JNICALL Java_Native_param
  * Signature: ([JIJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_fun
-  (JNIEnv *, jclass, jlongArray, jint, jlong);
+        (JNIEnv *, jclass, jlongArray, jint, jlong);
 
 /*
  * Class:     Native
@@ -453,7 +453,7 @@ JNIEXPORT jlong JNICALL Java_Native_fun
  * Signature: ([JIJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_apply
-  (JNIEnv *, jclass, jlongArray, jint, jlong);
+        (JNIEnv *, jclass, jlongArray, jint, jlong);
 
 /*
  * Class:     Native
@@ -461,7 +461,7 @@ JNIEXPORT jlong JNICALL Java_Native_apply
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_Native_printModel
-  (JNIEnv *, jclass);
+        (JNIEnv *, jclass);
 
 /*
  * Class:     Native
@@ -469,7 +469,7 @@ JNIEXPORT void JNICALL Java_Native_printModel
  * Signature: (J)Ljava/lang/String;
  */
 JNIEXPORT jstring JNICALL Java_Native_getBits
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -477,7 +477,7 @@ JNIEXPORT jstring JNICALL Java_Native_getBits
  * Signature: (Ljava/lang/String;)J
  */
 JNIEXPORT jlong JNICALL Java_Native_constLong
-  (JNIEnv *, jclass, jstring);
+        (JNIEnv *, jclass, jstring);
 
 /*
  * Class:     Native
@@ -485,7 +485,7 @@ JNIEXPORT jlong JNICALL Java_Native_constLong
  * Signature: ([JIJ)J
  */
 JNIEXPORT jlong JNICALL Java_Native_forAll
-  (JNIEnv *, jclass, jlongArray, jint, jlong);
+        (JNIEnv *, jclass, jlongArray, jint, jlong);
 
 /*
  * Class:     Native
@@ -493,7 +493,7 @@ JNIEXPORT jlong JNICALL Java_Native_forAll
  * Signature: (Ljava/lang/String;J)Z
  */
 JNIEXPORT jboolean JNICALL Java_Native_boolectorAssert
-  (JNIEnv *, jclass, jstring, jlong);
+        (JNIEnv *, jclass, jstring, jlong);
 
 /*
  * Class:     Native
@@ -501,7 +501,7 @@ JNIEXPORT jboolean JNICALL Java_Native_boolectorAssert
  * Signature: (J)I
  */
 JNIEXPORT jint JNICALL Java_Native_kindNode
-  (JNIEnv *, jclass, jlong);
+        (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     Native
@@ -509,7 +509,7 @@ JNIEXPORT jint JNICALL Java_Native_kindNode
  * Signature: (JJLjava/lang/String;[JI)J
  */
 JNIEXPORT jlong JNICALL Java_Native_writerInArray
-  (JNIEnv *, jclass, jlong, jlong, jstring, jlongArray, jint);
+        (JNIEnv *, jclass, jlong, jlong, jstring, jlongArray, jint);
 
 #ifdef __cplusplus
 }
