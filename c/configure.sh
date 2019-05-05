@@ -1,6 +1,6 @@
 #!/bin/bash
 
-boolector=$(pwd)
+javaBoolectorC=$(pwd)
 git submodule init
 git submodule update
 
@@ -13,3 +13,8 @@ cd boolector
 
 cd build
 make
+
+cd ./$javaBoolectorC
+cmake .
+make
+./lib_in_resources.sh
