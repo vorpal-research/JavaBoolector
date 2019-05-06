@@ -1,14 +1,17 @@
+package io.github.boolector;
+
+
 import java.util.*;
 
-abstract class BoolectorObject {
+public abstract class BoolectorObject {
 
-    final long ref;
+    public final long ref;
 
     BoolectorObject(long ref) {
         this.ref = ref;
     }
 
-    abstract void release();
+    abstract public void release();
 
     static long[] toLong(BoolectorObject[] boolectorObj) {
         int size = boolectorObj.length;

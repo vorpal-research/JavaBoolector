@@ -1,4 +1,6 @@
-final class Native {
+package io.github.boolector;
+
+public final class Native {
 
     public static native void btor();
 

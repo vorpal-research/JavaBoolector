@@ -1,8 +1,7 @@
+import io.github.boolector.*;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BoolectorNodeTest {
 
@@ -118,7 +117,7 @@ public class BoolectorNodeTest {
     @Test
     public void BoolectorNode() {
         Btor.btor();
-        BoolectorNode x, y, bool, bitvec, ite, getSymbol;
+        BoolectorNode x, y, bool, bitvec, ite;
 
         x = BitvecNode.constBitvec("000101");
         y = BitvecNode.constBitvec("000011");
@@ -148,7 +147,7 @@ public class BoolectorNodeTest {
         Btor.btor();
         BitvecNode x, y, i, j;
         ArrayNode arrayConst, array;
-        BitvecSort index, e;
+        BitvecSort index;
 
         x = BitvecNode.constBitvec("000101");
         y = BitvecNode.constBitvec("000011");

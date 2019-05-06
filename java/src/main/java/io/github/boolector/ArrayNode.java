@@ -1,14 +1,16 @@
-class ArrayNode extends BoolectorNode {
+package io.github.boolector;
+
+public class ArrayNode extends BoolectorNode {
 
     ArrayNode(long ref) {
         super(ref);
     }
 
-    static ArrayNode arrayNode(ArraySort sort, String name) {
+    public static ArrayNode arrayNode(ArraySort sort, String name) {
         return new ArrayNode(Native.array(sort.ref, name));//sfdjfsdjffffffffffffffff
     }
 
-    static ArrayNode constArrayNode(String name, BitvecNode... elements) {
+    public static ArrayNode constArrayNode(String name, BitvecNode... elements) {
         int length = elements.length;
         BitvecSort indexSort = BitvecSort.bitvecSort(widthSort(length));
         BitvecSort elementsSort;
@@ -23,11 +25,11 @@ class ArrayNode extends BoolectorNode {
         return ans;
     }
 
-    BitvecNode read(BitvecNode index) {
+    public BitvecNode read(BitvecNode index) {
         return new BitvecNode(Native.read(ref, index.ref));
     }
 
-    ArrayNode write(BitvecNode index, BitvecNode value) {
+    public ArrayNode write(BitvecNode index, BitvecNode value) {
         return new ArrayNode(Native.write(ref, index.ref, value.ref));
     }
 

@@ -1,19 +1,21 @@
-class BoolectorFun extends BoolectorObject {
+package io.github.boolector;
+
+public class BoolectorFun extends BoolectorObject {
 
     BoolectorFun(long ref) {
         super(ref);
     }
 
-    void release() {
+    public void release() {
         Native.releaseNode(ref);
     }
 
-    static class FuncParam extends BoolectorFun {
+    public static class FuncParam extends BoolectorFun {
         FuncParam(long ref) {
             super(ref);
         }
 
-        static FuncParam param(BoolectorSort sort, String name) {
+        public static FuncParam param(BoolectorSort sort, String name) {
             return new FuncParam(Native.param(sort.ref, name));
         }
     }

@@ -1,14 +1,16 @@
+package io.github.boolector;
+
 public class BitvecSort extends BoolectorSort {
 
     BitvecSort(long ref) {
         super(ref);
     }
 
-    static BitvecSort bitvecSort(int width) {
+    public static BitvecSort bitvecSort(int width) {
         return new BitvecSort(Native.bitvecSort(width));
     }
 
-    int getWidth() {
+    public int getWidth() {
         return Native.getWidth(ref);
     }
 

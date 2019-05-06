@@ -1,6 +1,7 @@
+import io.github.boolector.*;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FunctionTest {
 

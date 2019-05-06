@@ -1,4 +1,6 @@
-class Function extends BoolectorFun {
+package io.github.boolector;
+
+public class Function extends BoolectorFun {
     final private long[] params;
 
     private Function(long ref, long[] params) {
@@ -6,21 +8,21 @@ class Function extends BoolectorFun {
         this.params = params;
     }
 
-    BoolectorNode apply(BoolectorNode... argNodesFunc) {
+    public BoolectorNode apply(BoolectorNode... argNodesFunc) {
         long[] argNodes = toLong(argNodesFunc);
         return new BoolectorNode(Native.apply(argNodes, argNodes.length, ref));
     }
 
-    long[] getParams() {
+    public long[] getParams() {
         return params;
     }
 
-    static Function func(BoolectorNode nodeBody, FuncParam... func_params) {
+    public static Function func(BoolectorNode nodeBody, FuncParam... func_params) {
         long[] params = toLong(func_params);
         return new Function(Native.fun(params, params.length, nodeBody.ref), params);
     }
 
-    static Function forAll(BoolectorNode nodeBody, FuncParam... func_params) {
+    public static Function forAll(BoolectorNode nodeBody, FuncParam... func_params) {
         long[] params = toLong(func_params);
         return new Function(Native.forAll(params, params.length, nodeBody.ref), params);
     }

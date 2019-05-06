@@ -1,10 +1,12 @@
+package io.github.boolector;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.lang.*;
 
-class Btor {
+public class Btor {
 
     static {
         try {
@@ -15,15 +17,15 @@ class Btor {
         }
     }
 
-    static void btor() {
+    public static void btor() {
         Native.btor();
     }
 
-    static void btorRelease() {
+    public static void btorRelease() {
         Native.btorRelease();
     }
 
-    static void printModel() {
+    public static void printModel() {
         Native.printModel();
     }
 }
