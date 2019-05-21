@@ -10,4 +10,5 @@
 !CMakeLists.txt
 /c/Makefile
 /java/target
+!.git
 
