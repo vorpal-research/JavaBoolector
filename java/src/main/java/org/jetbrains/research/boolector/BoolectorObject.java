@@ -1,7 +1,5 @@
-package io.github.boolector;
-
-
-import java.util.*;
+package org.jetbrains.research.boolector;
+import java.util.Objects;
 
 public abstract class BoolectorObject {
 
@@ -20,5 +18,18 @@ public abstract class BoolectorObject {
             toLong[i] = boolectorObj[i].ref;
         }
         return toLong;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BoolectorObject that = (BoolectorObject) o;
+        return ref == that.ref;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ref);
     }
 }

@@ -1,4 +1,4 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 public class BoolectorFun extends BoolectorObject {
 
@@ -16,7 +16,8 @@ public class BoolectorFun extends BoolectorObject {
         }
 
         public static FuncParam param(BoolectorSort sort, String name) {
-            return new FuncParam(Native.param(sort.ref, name));
+            if (name == null ) return new FuncParam(Native.param(sort.ref, "nullInC"));
+            else return new FuncParam(Native.param(sort.ref, name));
         }
     }
 }

@@ -1,4 +1,4 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 public class BitvecNode extends BoolectorNode {
     BitvecNode(long ref) {
@@ -21,8 +21,8 @@ public class BitvecNode extends BoolectorNode {
         return new BitvecNode(Native.constInt(value, sort.ref));
     }
 
-    public static BitvecNode constLong(long value) {
-        return new BitvecNode(Native.constLong(String.valueOf(value)));
+    public static BitvecNode constLong(long value,BitvecSort sort) {
+        return new BitvecNode(Native.constLong(String.valueOf(value), sort.ref));
     }
 
     public BitvecNode sext(int width) {

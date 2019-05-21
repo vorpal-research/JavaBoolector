@@ -1,4 +1,4 @@
-import io.github.boolector.*;
+import org.jetbrains.research.boolector.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -52,7 +52,8 @@ public class BoolectorNodeTest {
         BoolNode sgt, sgte, slt, slte;
         x = BitvecNode.constBitvec("000101");
         y = BitvecNode.constBitvec("000011");
-        longConst = BitvecNode.constLong(3000000000L);
+        BitvecSort long_sort=BitvecSort.bitvecSort(64);
+        longConst = BitvecNode.constLong(3000000000L,long_sort);
 
 
         sext = x.sext(4);
@@ -151,15 +152,14 @@ public class BoolectorNodeTest {
 
         x = BitvecNode.constBitvec("000101");
         y = BitvecNode.constBitvec("000011");
-        i = BitvecNode.constBitvec("0");
-        j = BitvecNode.constBitvec("1");
+        i = BitvecNode.constBitvec("000000");
+        j = BitvecNode.constBitvec("100000");
 
         index = x.getSort().toBitvecSort();
         ArraySort sort = ArraySort.arraySort(index, index);
         array = ArrayNode.arrayNode(sort, "Temp");
 
-        arrayConst = ArrayNode.constArrayNode("test", x, y);
-        arrayConst = arrayConst.write(i, y);
+        arrayConst = ArrayNode.constArrayNode( index, x);
         BoolNode eq = arrayConst.read(i).eq(arrayConst.read(j));
         BoolectorSat.getBoolectorSat();
         boolectorAssert("1", eq);

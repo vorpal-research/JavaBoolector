@@ -1,10 +1,12 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 public class BoolectorNode extends BoolectorObject {
 
     BoolectorNode(long ref) {
         super(ref);
     }
+
+    private TypeNode kind = TypeNode.Unknown;
 
     public void release() {
         Native.releaseNode(ref);
@@ -55,24 +57,58 @@ public class BoolectorNode extends BoolectorObject {
     }
 
     public boolean isBoolConst() {
-        return Native.kindNode(ref) == 0;
+        if (kind == TypeNode.BoolConst) return true;
+        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BoolConst;
+        else return false;
     }
 
     public boolean isBitvecConst() {
-        return Native.kindNode(ref) == 1;
+        if (kind == TypeNode.BitvecConst) return true;
+        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BitvecConst;
+        else return false;
     }
 
-    public boolean isArrayNode() {
-        return Native.kindNode(ref) == 2;
+    public boolean isArrayNode(){
+        if (kind == TypeNode.ArrayNode) return true;
+        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.ArrayNode;
+        else return false;
     }
 
     public boolean isBoolNode() {
-        return Native.kindNode(ref) == 3;
+        if (kind == TypeNode.BoolNode) return true;
+        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BoolNode;
+        else return false;
     }
 
     public boolean isBitvecNode() {
-        return Native.kindNode(ref) == 4;
+        if (kind == TypeNode.BitvecNode) return true;
+        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BitvecNode;
+        else return false;
     }
 
-
+    public TypeNode kindNode() {
+        int kindObj = Native.kindNode(ref);
+        switch (kindObj) {
+            case 0:
+                kind = TypeNode.BoolConst;
+                return kind;
+            case 1:
+                kind = TypeNode.BitvecConst;
+            return kind;
+            case 2:
+                kind = TypeNode.ArrayNode;
+            return kind;
+            case 3:
+                kind = TypeNode.BoolNode;
+            return kind;
+            case 4:
+                kind = TypeNode.BitvecNode;
+            return kind;
+            default:
+                kind = TypeNode.Unknown;
+            return kind;
+        }
+    }
 }
+
+

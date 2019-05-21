@@ -1,4 +1,4 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 public class BitvecSort extends BoolectorSort {
 
@@ -13,5 +13,7 @@ public class BitvecSort extends BoolectorSort {
     public int getWidth() {
         return Native.getWidth(ref);
     }
+
+
 
 }

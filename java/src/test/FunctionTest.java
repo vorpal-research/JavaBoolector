@@ -1,5 +1,8 @@
-import io.github.boolector.*;
+import org.jetbrains.research.boolector.*;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,9 +24,11 @@ public class FunctionTest {
         BitvecNode temp = x.add(y);
         BoolectorFun.FuncParam firstParam = BoolectorFun.FuncParam.param(sort,"nullINc");
         BoolectorFun.FuncParam secondParam = BoolectorFun.FuncParam.param(sort,"nullINc");
-        Function slt = Function.func(temp,firstParam,secondParam);
-        BitvecNode first = slt.apply(x,y).toBitvecNode();
-        BitvecNode second = slt.apply(y,x).toBitvecNode();
+        List<BoolectorFun.FuncParam> param = Arrays.asList(firstParam,secondParam);
+        Function slt = Function.func(temp, param);
+        List paramX =Arrays.asList(x,y);
+        BitvecNode first = slt.apply(paramX).toBitvecNode();
+        BitvecNode second = slt.apply(paramX).toBitvecNode();
         BoolNode eq = first.eq(second);
         //BoolNode ans =first.and(second);
 

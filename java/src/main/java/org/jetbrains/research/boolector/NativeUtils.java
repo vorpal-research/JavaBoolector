@@ -1,4 +1,4 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 /*
  * Class NativeUtils is published under the The MIT License:

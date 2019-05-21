@@ -1,4 +1,5 @@
-import io.github.boolector.*;
+import org.jetbrains.research.boolector.BitvecSort;
+import org.jetbrains.research.boolector.Btor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

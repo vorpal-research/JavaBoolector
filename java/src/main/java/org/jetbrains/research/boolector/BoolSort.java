@@ -1,4 +1,4 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 public class BoolSort extends BoolectorSort {
     BoolSort(long ref) {

@@ -1,10 +1,6 @@
-package io.github.boolector;
+package org.jetbrains.research.boolector;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.lang.*;
 
 public class Btor {
 
