@@ -2,5 +2,9 @@
 
 javaBoolector=$(pwd)
 
-$javaBoolector/c/configure.sh
-$javaBoolector/java/mvn clean package
+cd $javaBoolector/c
+./configure.sh
+cd
+cd $javaBoolector
+cd $javaBoolector/java
+mvn clean package
