@@ -3,6 +3,9 @@ package org.jetbrains.research.boolector;
 import java.io.IOException;
 
 public class Btor {
+    public Btor() {
+        Native.btor();
+    }
 
     static {
         try {
@@ -13,15 +16,11 @@ public class Btor {
         }
     }
 
-    public static void btor() {
-        Native.btor();
-    }
-
-    public static void btorRelease() {
+    public void btorRelease() {
         Native.btorRelease();
     }
 
-    public static void printModel() {
+    public void printModel() {
         Native.printModel();
     }
 }

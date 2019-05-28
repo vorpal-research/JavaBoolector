@@ -2,9 +2,21 @@ package org.jetbrains.research.boolector;
 
 public class BoolectorSat {
 
-    public static final int SAT = 10;
-    public static final int UNSAT = 20;
-    public static final int UNKNOWN = 0;
+    public enum Status {
+        SAT(10),
+        UNSAT(20),
+        UNKNOWN(0);
+
+        private final int intValue;
+
+        Status(int i) {
+            this.intValue = i;
+        }
+
+        public final int toInt() {
+            return this.intValue;
+        }
+    }
 
     public static int simplify() {
         return Native.simplify();

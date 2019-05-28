@@ -9,10 +9,10 @@ public class BitvecSortTest {
 
     @Test
     public void bitvecSort() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
         assertTrue(sort.isBitvecSort());
         assertEquals(8,sort.getWidth());
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 }

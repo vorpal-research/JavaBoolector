@@ -7,7 +7,7 @@ public class BoolectorNodeTest {
 
     @Test
     public void bitvecNodeFirst() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
         BitvecNode x = BitvecNode.var(sort, "nullINc");
         BitvecNode y = BitvecNode.var(sort, "nullINc");
@@ -17,8 +17,8 @@ public class BoolectorNodeTest {
         BoolNode formula = eq.not();
         formula.assertForm();
         int result = BoolectorSat.getBoolectorSat();
-        assertEquals(BoolectorSat.UNSAT, result);
-        Btor.btorRelease();
+        assertEquals(BoolectorSat.Status.UNSAT, result);
+        btor.btorRelease();
     }
 
     private BitvecNode andNot(BitvecNode x, BitvecNode y) {
@@ -27,7 +27,7 @@ public class BoolectorNodeTest {
 
     @Test
     public void bitvecNodeSecond() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
         BitvecNode x = BitvecNode.var(sort, "nullINc");
         BitvecNode y = BitvecNode.var(sort, "nullINc");
@@ -42,12 +42,12 @@ public class BoolectorNodeTest {
         BoolNode varsSgt = varsSgtZero.and(overflow);
         BoolNode ans = varsSgt.implies(addSgtZero);
         BoolectorSat.simplify();
-        assertFormuls(ans);
+        assertFormuls(btor,ans);
     }
 
     @Test
     public void BitveNodeTest() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecNode x, y, longConst, sext, uext, slice, neg, add, sub, mul, sdiv, udiv, smod, urem, sll, srl, sra, concat;
         BoolNode sgt, sgte, slt, slte;
         x = BitvecNode.constBitvec("000101");
@@ -96,12 +96,12 @@ public class BoolectorNodeTest {
         boolectorAssert("000000", srl);
         boolectorAssert("000000", sra);
         boolectorAssert("000101000011", concat);
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 
     @Test
     public void BoolNodeTest() {
-        Btor.btor();
+        Btor btor = new Btor();
         BoolNode x, y, or, xor, iff;
         x = BoolNode.constBool(true);
         y = BoolNode.constBool(false);
@@ -112,12 +112,12 @@ public class BoolectorNodeTest {
         boolectorAssert("1", or);
         boolectorAssert("1", xor);
         boolectorAssert("0", iff);
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 
     @Test
     public void BoolectorNode() {
-        Btor.btor();
+        Btor btor = new Btor();
         BoolectorNode x, y, bool, bitvec, ite;
 
         x = BitvecNode.constBitvec("000101");
@@ -140,12 +140,12 @@ public class BoolectorNodeTest {
             ++i;
         }
         assertEquals(1, i);
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 
     @Test
     public void arrayNode() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecNode x, y, i, j;
         ArrayNode arrayConst, array;
         BitvecSort index;
@@ -163,15 +163,15 @@ public class BoolectorNodeTest {
         BoolNode eq = arrayConst.read(i).eq(arrayConst.read(j));
         BoolectorSat.getBoolectorSat();
         boolectorAssert("1", eq);
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 
-    private static void assertFormuls(BoolNode node) {
+    private static void assertFormuls(Btor btor,BoolNode node) {
         BoolNode formula = node.not();
         formula.assertForm();
         int ans = BoolectorSat.getBoolectorSat();
-        assertEquals(BoolectorSat.UNSAT, ans);
-        Btor.btorRelease();
+        assertEquals(BoolectorSat.Status.UNSAT, ans);
+        btor.btorRelease();
     }
 
     private static void boolectorAssert(String ans, BoolectorNode node) {

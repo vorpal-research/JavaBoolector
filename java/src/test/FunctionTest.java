@@ -10,7 +10,7 @@ public class FunctionTest {
 
     @Test
    public void testAll() {
-        Btor.btor();
+        Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
         BitvecNode x = BitvecNode.var(sort, "nullINc");
         BitvecNode y = BitvecNode.var(sort, "nullINc");
@@ -32,16 +32,16 @@ public class FunctionTest {
         BoolNode eq = first.eq(second);
         //BoolNode ans =first.and(second);
 
-        assertFormuls(eq);
+        assertFormuls(btor,eq);
     }
 
-    public static void assertFormuls(BoolNode node) {
+    public static void assertFormuls(Btor btor,BoolNode node) {
         BoolNode formula = node.not();
         formula.assertForm();
         int ans = BoolectorSat.getBoolectorSat();
-        assertEquals(BoolectorSat.UNSAT, ans);
+        assertEquals(BoolectorSat.Status.UNSAT, ans);
 
-        Btor.btorRelease();
+        btor.btorRelease();
     }
 
 }
