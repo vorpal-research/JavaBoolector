@@ -20,6 +20,8 @@ public class Btor {
         Native.btorRelease();
     }
 
+    public void dumpSmt2() {Native.dumpSmt2();}
+
     public void printModel() {
         Native.printModel();
     }

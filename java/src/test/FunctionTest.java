@@ -38,7 +38,7 @@ public class FunctionTest {
     public static void assertFormuls(Btor btor,BoolNode node) {
         BoolNode formula = node.not();
         formula.assertForm();
-        int ans = BoolectorSat.getBoolectorSat();
+        BoolectorSat.Status ans = BoolectorSat.getBoolectorSat();
         assertEquals(BoolectorSat.Status.UNSAT, ans);
 
         btor.btorRelease();

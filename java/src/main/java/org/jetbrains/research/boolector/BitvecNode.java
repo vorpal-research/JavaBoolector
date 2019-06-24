@@ -1,12 +1,15 @@
 package org.jetbrains.research.boolector;
 
 public class BitvecNode extends BoolectorNode {
+
+    private static Integer numberBitvec = 0;
+
     BitvecNode(long ref) {
         super(ref);
     }
 
     public static BitvecNode var(BitvecSort sort, String name) {
-        return new BitvecNode(Native.var(sort.ref, name));
+        return new BitvecNode(Native.var(sort.ref, name +"!" + numberBitvec++));
     }
 
     public static BitvecNode zero(BitvecSort sort) {

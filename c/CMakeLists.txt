@@ -12,6 +12,8 @@ set(BOOLECTOR_INCLUDE_LIB ${BOOLECTOR_DIR}/build/lib)
 include_directories(${BOOLECTOR_INCLUDE_DIRS})
 link_directories(${BOOLECTOR_INCLUDE_LIB})
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g3")
+
 set(SOURCES JavaBoolector.c)
 set(HEADERS JavaBoolector.h)
 add_library(JavaBoolector SHARED ${HEADER} ${SOURCES})

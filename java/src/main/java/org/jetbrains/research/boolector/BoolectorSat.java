@@ -9,8 +9,14 @@ public class BoolectorSat {
 
         private final int intValue;
 
-        Status(int i) {
-            this.intValue = i;
+        Status(int intValue) {
+            this.intValue = intValue;
+        }
+
+        public static Status fromInt(int i) {
+            if (SAT.toInt() == i ) return SAT;
+            if (UNSAT.toInt() == i) return UNSAT;
+            return UNKNOWN;
         }
 
         public final int toInt() {
@@ -22,8 +28,9 @@ public class BoolectorSat {
         return Native.simplify();
     }
 
-    public static int getBoolectorSat() {
-        return Native.getSat();
+    public static Status getBoolectorSat() {
+        return Status.fromInt(Native.getSat());
     }
+
 }
 

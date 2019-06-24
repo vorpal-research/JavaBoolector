@@ -16,7 +16,7 @@ public class BoolectorNodeTest {
         BoolNode eq = ansXor.eq(ansOr); //fdskfdjsfkjdsklfjdskfjkldsjfkl
         BoolNode formula = eq.not();
         formula.assertForm();
-        int result = BoolectorSat.getBoolectorSat();
+        BoolectorSat.Status result = BoolectorSat.getBoolectorSat();
         assertEquals(BoolectorSat.Status.UNSAT, result);
         btor.btorRelease();
     }
@@ -169,7 +169,7 @@ public class BoolectorNodeTest {
     private static void assertFormuls(Btor btor,BoolNode node) {
         BoolNode formula = node.not();
         formula.assertForm();
-        int ans = BoolectorSat.getBoolectorSat();
+        BoolectorSat.Status ans = BoolectorSat.getBoolectorSat();
         assertEquals(BoolectorSat.Status.UNSAT, ans);
         btor.btorRelease();
     }

@@ -10,7 +10,7 @@ public final class Native {
 
     static native void releaseNode(long ref);
 
-    static native long bitvecSort(int width);
+    public static native long bitvecSort(int width);
 
     static native void releaseSort(long ref);
 
@@ -24,7 +24,7 @@ public final class Native {
 
     static native long add(long firstRef, long secondRef);
 
-    static native long and(long firstRef, long secondRef);
+    public static native long and(long firstRef, long secondRef);
 
     static native long or(long firstRef, long secondRef);
 
@@ -127,4 +127,12 @@ public final class Native {
     static native int kindNode(long ref);
 
     static native long constArray(long array_ref, long index_ref, long element_ref);
+
+    static native int getWidthNode(long ref);
+
+    static native int getIndexWidth(long ref);
+
+    static native void dumpSmt2();
+
+    static native void assume(long ref);
 }

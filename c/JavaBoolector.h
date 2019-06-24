@@ -511,6 +511,38 @@ JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_kindNode
 JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_constArray
   (JNIEnv *, jclass, jlong, jlong, jlong);
 
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    getWidthNode
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_getWidthNode
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    getIndexWidth
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_getIndexWidth
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    dumpSmt2
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    assume
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_assume
+  (JNIEnv *, jclass, jlong);
+
 #ifdef __cplusplus
 }
 #endif

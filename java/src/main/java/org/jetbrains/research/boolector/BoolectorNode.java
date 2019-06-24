@@ -6,7 +6,7 @@ public class BoolectorNode extends BoolectorObject {
         super(ref);
     }
 
-    private TypeNode kind = TypeNode.Unknown;
+    private TypeNode kind = TypeNode.UNKNOWN;
 
     public void release() {
         Native.releaseNode(ref);
@@ -36,10 +36,17 @@ public class BoolectorNode extends BoolectorObject {
         return Native.getSymbol(ref);
     }
 
+    public int getWidth() {
+        return Native.getWidthNode(ref);
+    }
+
     public void assertForm() {
         Native.assertForm(ref);
     }
 
+    public void assume() {
+        Native.assume(ref);
+    }
     //dsfjsklxfjksdljfklsdjfklsdjfklsjfkls
     public BitvecNode toBitvecNode() {
         if (isArrayNode()) throw new ClassCastException();
@@ -57,55 +64,62 @@ public class BoolectorNode extends BoolectorObject {
     }
 
     public boolean isBoolConst() {
-        if (kind == TypeNode.BoolConst) return true;
-        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BoolConst;
+       int kindObj = Native.kindNode(ref);
+       if (kindObj==0) {
+           kind = TypeNode.BOOLNODE;
+           return true;
+       }
         else return false;
     }
 
     public boolean isBitvecConst() {
-        if (kind == TypeNode.BitvecConst) return true;
-        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BitvecConst;
+        int kindObj = Native.kindNode(ref);
+        if (kindObj==1) {
+            kind = TypeNode.BITVECNODE;
+            return true;
+        }
         else return false;
     }
-
     public boolean isArrayNode(){
-        if (kind == TypeNode.ArrayNode) return true;
-        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.ArrayNode;
+        if (kind == TypeNode.ARRAYNODE) return true;
+        if (kind == TypeNode.UNKNOWN) return kindNode() == TypeNode.ARRAYNODE;
         else return false;
     }
 
     public boolean isBoolNode() {
-        if (kind == TypeNode.BoolNode) return true;
-        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BoolNode;
+        if (kind == TypeNode.BOOLNODE) return true;
+        if (kind == TypeNode.UNKNOWN) return kindNode() == TypeNode.BOOLNODE;
         else return false;
     }
 
     public boolean isBitvecNode() {
-        if (kind == TypeNode.BitvecNode) return true;
-        if (kind == TypeNode.Unknown) return kindNode() == TypeNode.BitvecNode;
+        if (kind == TypeNode.BITVECNODE) return true;
+        if (kind == TypeNode.UNKNOWN) return kindNode() == TypeNode.BITVECNODE;
         else return false;
     }
 
-    public TypeNode kindNode() {
+
+
+    private TypeNode kindNode() {
         int kindObj = Native.kindNode(ref);
         switch (kindObj) {
             case 0:
-                kind = TypeNode.BoolConst;
+                kind = TypeNode.BOOLNODE;
                 return kind;
             case 1:
-                kind = TypeNode.BitvecConst;
+                kind = TypeNode.BITVECNODE;
             return kind;
             case 2:
-                kind = TypeNode.ArrayNode;
+                kind = TypeNode.ARRAYNODE;
             return kind;
             case 3:
-                kind = TypeNode.BoolNode;
+                kind = TypeNode.BOOLNODE;
             return kind;
             case 4:
-                kind = TypeNode.BitvecNode;
+                kind = TypeNode.BITVECNODE;
             return kind;
             default:
-                kind = TypeNode.Unknown;
+                kind = TypeNode.UNKNOWN;
             return kind;
         }
     }
