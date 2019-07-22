@@ -135,4 +135,6 @@ public final class Native {
     static native void dumpSmt2();
 
     static native void assume(long ref);
+
+    static native long bitvecAssignment(long ref);
 }

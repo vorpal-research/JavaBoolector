@@ -88,6 +88,20 @@ Java_org_jetbrains_research_boolector_Native_getBits(JNIEnv *env, jobject jobj, 
     return (*env)->NewStringUTF(env, bits);
 }
 
+JNIEXPORT jlong JNICALL
+Java_org_jetbrains_research_boolector_Native_bitvecAssignment(JNIEnv *env, jobject jobj, jlong jnode_ref) { //почему работает с отрицательными числами?
+    BoolectorNode *node = (BoolectorNode *) jnode_ref;
+    int size = boolector_get_width(btor, node);
+    const char *bits = boolector_bv_assignment(btor, node);
+    long long number = 0;
+    long long power = 1;
+    for (int i = size-1; i >= 0; i--) {
+        if (bits[i] == '1') number += power;
+        power *= 2;
+    }
+    boolector_free_bv_assignment(btor, bits);
+    return (jlong) number;
+}
 
 JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_constNodeTrue(JNIEnv *env, jobject jobj) {
     return (jlong) boolector_true(btor);

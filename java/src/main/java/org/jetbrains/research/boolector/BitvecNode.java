@@ -124,4 +124,7 @@ public class BitvecNode extends BoolectorNode {
         return Native.getBits(ref);
     }
 
+    public long assignment() {
+        return Native.bitvecAssignment(ref);
+    }
 }

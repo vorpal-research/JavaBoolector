@@ -33,4 +33,8 @@ public class BoolNode extends BoolectorNode {
         return new BoolNode(Native.iff(ref, boolNode.ref));
     }
 
+    public Boolean assigment() {
+        return this.toBitvecNode().assignment()==1;
+    }
+
 }

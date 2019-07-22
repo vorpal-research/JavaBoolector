@@ -75,12 +75,15 @@ public class BoolectorNodeTest {
         srl = x.srl(y);
         sra = x.sra(y);
         concat = x.concat(y);
+        x = BitvecNode.constInt(-5, long_sort);
         BoolectorSat.getBoolectorSat();
+        long assignment = x.assignment();
+        BoolNode test = BoolNode.constBool(true);
         boolectorAssert("0000000000000000000000000000000010110010110100000101111000000000", longConst);
         boolectorAssert("0000000101", sext);
         boolectorAssert("0000000101",uext);
         boolectorAssert("101",slice);
-        boolectorAssert("111011", neg); // разве доп + не само число?
+        boolectorAssert("111011", neg);
         boolectorAssert("001000", add);
         boolectorAssert("000010", sub);
         boolectorAssert("001111", mul);
@@ -96,6 +99,8 @@ public class BoolectorNodeTest {
         boolectorAssert("000000", srl);
         boolectorAssert("000000", sra);
         boolectorAssert("000101000011", concat);
+        assertEquals(-5,assignment);
+        assertTrue(test.assigment());
         btor.btorRelease();
     }
 

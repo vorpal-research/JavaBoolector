@@ -543,6 +543,14 @@ JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2
 JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_assume
   (JNIEnv *, jclass, jlong);
 
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    bitvecAssignment
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_bitvecAssignment
+  (JNIEnv *, jclass, jlong);
+
 #ifdef __cplusplus
 }
 #endif
