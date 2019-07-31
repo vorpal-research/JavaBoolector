@@ -17,6 +17,7 @@ public class Btor {
     }
 
     public void btorRelease() {
+        BitvecNode.setConstNameClear();
         Native.btorRelease();
     }
 

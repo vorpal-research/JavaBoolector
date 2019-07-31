@@ -1,5 +1,5 @@
 #!/bin/bash
-cmake .
+cmake -g3 .
 make
 c=$(pwd)
 lib=$c/lib/libJavaBoolector.so

@@ -551,6 +551,14 @@ JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_assume
 JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_bitvecAssignment
   (JNIEnv *, jclass, jlong);
 
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    matchNodeByName
+ * Signature: (Ljava/lang/String;)J
+ */
+JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_matchNodeByName
+  (JNIEnv *, jclass, jstring);
+
 #ifdef __cplusplus
 }
 #endif

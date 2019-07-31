@@ -59,6 +59,14 @@ Java_org_jetbrains_research_boolector_Native_var(JNIEnv *env, jobject jobj, jlon
 }
 
 JNIEXPORT jlong JNICALL
+Java_org_jetbrains_research_boolector_Native_matchNodeByName(JNIEnv *env, jobject jobj, jstring jsymbol) {
+    const char *str = (*env)->GetStringUTFChars(env, jsymbol, 0);
+    BoolectorNode *node = boolector_match_node_by_symbol(btor,str);
+    (*env)->ReleaseStringUTFChars(env, jsymbol, str);
+    return (jlong) node;
+}
+
+JNIEXPORT jlong JNICALL
 Java_org_jetbrains_research_boolector_Native_constInt(JNIEnv *env, jobject jobj, jint num, jlong jsort_ref) {
     BoolectorSort sort = (BoolectorSort) jsort_ref;
     return (jlong) boolector_int(btor, num, sort);
@@ -99,6 +107,7 @@ Java_org_jetbrains_research_boolector_Native_bitvecAssignment(JNIEnv *env, jobje
         if (bits[i] == '1') number += power;
         power *= 2;
     }
+   // printf("%s\n%lli\n", bits, number);
     boolector_free_bv_assignment(btor, bits);
     return (jlong) number;
 }

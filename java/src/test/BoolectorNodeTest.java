@@ -9,8 +9,8 @@ public class BoolectorNodeTest {
     public void bitvecNodeFirst() {
         Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
-        BitvecNode x = BitvecNode.var(sort, "nullINc");
-        BitvecNode y = BitvecNode.var(sort, "nullINc");
+        BitvecNode x = BitvecNode.var(sort, "nullINc",true);
+        BitvecNode y = BitvecNode.var(sort, "nullINc",true);
         BitvecNode ansXor = x.xor(y);
         BitvecNode ansOr = andNot(x, y).or(andNot(y, x));
         BoolNode eq = ansXor.eq(ansOr); //fdskfdjsfkjdsklfjdskfjkldsjfkl
@@ -29,8 +29,8 @@ public class BoolectorNodeTest {
     public void bitvecNodeSecond() {
         Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
-        BitvecNode x = BitvecNode.var(sort, "nullINc");
-        BitvecNode y = BitvecNode.var(sort, "nullINc");
+        BitvecNode x = BitvecNode.var(sort, "nullINc",true);
+        BitvecNode y = BitvecNode.var(sort, "nullINc",true);
         BitvecNode zero = BitvecNode.zero(sort);
         BoolNode xSgtZero = x.sgt(zero);
         BoolNode ySgtZero = y.sgt(zero);
@@ -75,8 +75,11 @@ public class BoolectorNodeTest {
         srl = x.srl(y);
         sra = x.sra(y);
         concat = x.concat(y);
+        BitvecNode var = BitvecNode.var(long_sort,"test",false);
+        BitvecNode noFresh = BitvecNode.var(long_sort,"test",false);
         x = BitvecNode.constInt(-5, long_sort);
         BoolectorSat.getBoolectorSat();
+
         long assignment = x.assignment();
         BoolNode test = BoolNode.constBool(true);
         boolectorAssert("0000000000000000000000000000000010110010110100000101111000000000", longConst);
@@ -100,6 +103,7 @@ public class BoolectorNodeTest {
         boolectorAssert("000000", sra);
         boolectorAssert("000101000011", concat);
         assertEquals(-5,assignment);
+        assertEquals(var.ref,noFresh.ref);
         assertTrue(test.assigment());
         btor.btorRelease();
     }
@@ -131,7 +135,7 @@ public class BoolectorNodeTest {
         bool = BitvecNode.constBitvec("1");
         ite = x.ite(bool.toBoolNode(), y);
         BoolectorSort getSort = x.getSort();
-        bitvec = BitvecNode.var(getSort.toBitvecSort(), "test");
+        bitvec = BitvecNode.var(getSort.toBitvecSort(), "test",true);
         x.getID();
         BoolectorSat.getBoolectorSat();
         boolectorAssert("000101", ite);

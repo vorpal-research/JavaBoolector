@@ -137,4 +137,6 @@ public final class Native {
     static native void assume(long ref);
 
     static native long bitvecAssignment(long ref);
+
+    static native long matchNodeByName(String name);
 }

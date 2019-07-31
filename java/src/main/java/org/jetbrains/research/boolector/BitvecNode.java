@@ -1,15 +1,33 @@
 package org.jetbrains.research.boolector;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class BitvecNode extends BoolectorNode {
 
     private static Integer numberBitvec = 0;
+
+    private static Set<String> setConstName = new HashSet<>(); // мб HashMap и без matchNodeByName
+
+    static void setConstNameClear() {
+        setConstName.clear();
+    }
 
     BitvecNode(long ref) {
         super(ref);
     }
 
-    public static BitvecNode var(BitvecSort sort, String name) {
-        return new BitvecNode(Native.var(sort.ref, name +"!" + numberBitvec++));
+    public static BitvecNode var(BitvecSort sort, String name, boolean fresh) {
+        if (fresh) return new BitvecNode(Native.var(sort.ref, name + "!" + numberBitvec++));
+        else if (setConstName.contains(name)) return matchNodeByName(name);
+        else {
+            setConstName.add(name);
+            return new BitvecNode(Native.var(sort.ref, name));
+        }
+    }
+
+    public static BitvecNode matchNodeByName(String name) {
+        return new BitvecNode((Native.matchNodeByName(name)));
     }
 
     public static BitvecNode zero(BitvecSort sort) {
@@ -24,7 +42,7 @@ public class BitvecNode extends BoolectorNode {
         return new BitvecNode(Native.constInt(value, sort.ref));
     }
 
-    public static BitvecNode constLong(long value,BitvecSort sort) {
+    public static BitvecNode constLong(long value, BitvecSort sort) {
         return new BitvecNode(Native.constLong(String.valueOf(value), sort.ref));
     }
 

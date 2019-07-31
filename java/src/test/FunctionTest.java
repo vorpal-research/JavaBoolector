@@ -12,8 +12,8 @@ public class FunctionTest {
    public void testAll() {
         Btor btor = new Btor();
         BitvecSort sort = BitvecSort.bitvecSort(8);
-        BitvecNode x = BitvecNode.var(sort, "nullINc");
-        BitvecNode y = BitvecNode.var(sort, "nullINc");
+        BitvecNode x = BitvecNode.var(sort, "nullINc", true);
+        BitvecNode y = BitvecNode.var(sort, "nullINc", true);
         BitvecNode oldX = x.copy().toBitvecNode();
         BitvecNode oldY = y.copy().toBitvecNode();
         BitvecNode a= BitvecNode.constInt(10,sort);

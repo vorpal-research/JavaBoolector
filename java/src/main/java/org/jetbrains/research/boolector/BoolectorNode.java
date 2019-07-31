@@ -123,6 +123,10 @@ public class BoolectorNode extends BoolectorObject {
             return kind;
         }
     }
+
+    /*public BoolectorNode xor(BoolectorNode node) {
+        return new BoolectorNode(Native.xor(ref, node.ref));
+    }*/
 }
 
 
