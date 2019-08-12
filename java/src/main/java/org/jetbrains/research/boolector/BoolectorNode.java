@@ -28,7 +28,7 @@ public class BoolectorNode extends BoolectorObject {
         return new BoolectorSort(Native.getSort(ref));
     }
 
-    int getID() {
+    public int getID() {
         return Native.getId(ref);
     }
 
