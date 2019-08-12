@@ -28,7 +28,7 @@ public class BoolectorNode extends BoolectorObject {
         return new BoolectorSort(Native.getSort(ref));
     }
 
-    public int getID() {
+    int getID() {
         return Native.getId(ref);
     }
 
@@ -51,6 +51,16 @@ public class BoolectorNode extends BoolectorObject {
     public BitvecNode toBitvecNode() {
         if (isArrayNode()) throw new ClassCastException();
         return new BitvecNode(ref);
+    }
+
+    public  BitvecNode toBitvecNode(int castSize) {
+        BitvecNode node = toBitvecNode();
+        int curSize = getWidth();
+        long newRef;
+            if (curSize == castSize) newRef = node.ref;
+            else if  (curSize < castSize) newRef = node.sext(castSize).ref;
+            else node.slice(castSize - 1,0);
+            return new BitvecNode(ref);
     }
 
     public BoolNode toBoolNode() {

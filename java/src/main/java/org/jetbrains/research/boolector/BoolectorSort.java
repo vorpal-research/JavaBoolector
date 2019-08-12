@@ -33,6 +33,11 @@ public class BoolectorSort extends BoolectorObject {
         else throw new ClassCastException();
     }
 
+    public int getWidth() {
+        toBitvecSort();
+        return Native.getWidth(ref);
+    }
+
     public void release() {
         Native.releaseSort(ref);
     }

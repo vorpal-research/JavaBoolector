@@ -47,7 +47,8 @@ public class BitvecNode extends BoolectorNode {
     }
 
     public BitvecNode sext(int width) {
-        return new BitvecNode(Native.sext(ref, width));
+        int curSize = getSort().getWidth();
+        return new BitvecNode(Native.sext(ref, width-curSize));
     }
 
     public BitvecNode uext(int width) {

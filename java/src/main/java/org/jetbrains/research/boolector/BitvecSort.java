@@ -9,11 +9,4 @@ public class BitvecSort extends BoolectorSort {
     public static BitvecSort bitvecSort(int width) {
         return new BitvecSort(Native.bitvecSort(width));
     }
-
-    public int getWidth() {
-        return Native.getWidth(ref);
-    }
-
-
-
 }
