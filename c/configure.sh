@@ -16,6 +16,4 @@ cd build
 make
 cd
 cd $javaBoolectorC
-cmake .
-make
 ./lib_in_resources.sh
