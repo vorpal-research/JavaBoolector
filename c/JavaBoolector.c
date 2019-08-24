@@ -36,7 +36,15 @@ JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_simplify(JNI
 }
 
 JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_printModel(JNIEnv *env, jobject jobj) {
-    boolector_print_model(btor, "smt2", stdout);
+    FILE* print_model = fopen("model.txt","wt");
+    boolector_print_model(btor, "smt2", print_model);
+    fclose(print_model);
+}
+
+JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2(JNIEnv *env, jobject jobj) {
+    FILE* print_model = fopen("dumpSmt2.txt","wt");
+    boolector_dump_smt2(btor, print_model);
+    fclose(print_model);
 }
 
 JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_btorRelease(JNIEnv *env, jobject jobj) {
@@ -542,9 +550,7 @@ Java_org_jetbrains_research_boolector_Native_getIndexWidth(JNIEnv *env, jobject 
     return width_index;
 }
 
-JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2(JNIEnv *env, jobject jobj) {
-    boolector_dump_smt2(btor, stdout);
-}
+
 
 
 JNIEXPORT jboolean JNICALL

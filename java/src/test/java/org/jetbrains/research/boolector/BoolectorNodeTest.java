@@ -154,6 +154,17 @@ public class BoolectorNodeTest {
     }
 
     @Test
+    public void tempFiles() {
+        Btor btor = new Btor();
+        BoolNode x = BoolNode.constBool(true);
+        x.assertForm();
+        BoolectorSat.getBoolectorSat();
+        assertEquals("(model )", btor.printModel().get(0));
+        assertEquals("(set-logic QF_BV)", btor.dumpSmt2().get(0));
+        btor.btorRelease();
+    }
+
+    @Test
     public void arrayNode() {
         Btor btor = new Btor();
         BitvecNode x, i, j;
