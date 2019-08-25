@@ -107,7 +107,7 @@ public class BoolectorNode extends BoolectorObject {
     }
 
     public boolean isBoolNode() {
-        if (kind == TypeNode.BOOLNODE) return true;
+        if (kind == TypeNode.BOOLNODE || (isBitvecNode() && width==1)) return true;
         if (kind == TypeNode.UNKNOWN) return kindNode() == TypeNode.BOOLNODE;
         else return false;
     }
