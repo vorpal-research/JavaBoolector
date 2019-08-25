@@ -423,24 +423,6 @@ Java_org_jetbrains_research_boolector_Native_isBitvecSort(JNIEnv *env, jobject j
     return (jboolean) boolector_is_bitvec_sort(btor, s);
 }
 
-JNIEXPORT jint JNICALL
-Java_org_jetbrains_research_boolector_Native_getWidth(JNIEnv *env, jobject jobj, jlong jsort_ref) {
-    BoolectorSort s = (BoolectorSort) jsort_ref;
-    BoolectorNode *node = boolector_var(btor, s, NULL); //djgdjgklfdjkldfjgkfjblkcjvbklvcjb kbjk
-    jint width = (jint) boolector_get_width(btor, node);
-    boolector_release(btor, node);
-    return width;
-}
-
-JNIEXPORT jboolean JNICALL
-Java_org_jetbrains_research_boolector_Native_isBoolSort(JNIEnv *env, jobject jobj, jlong jsort_ref) {
-    BoolectorSort s = (BoolectorSort) jsort_ref;
-    bool isBoolSort =
-            boolector_is_bitvec_sort(btor, s) &&
-            Java_org_jetbrains_research_boolector_Native_getWidth(env, jobj, jsort_ref) == 1;
-    return (jboolean) isBoolSort;
-}
-
 JNIEXPORT jboolean JNICALL
 Java_org_jetbrains_research_boolector_Native_isArraySort(JNIEnv *env, jobject jobj, jlong jsort_ref) {
     BoolectorSort s = (BoolectorSort) jsort_ref;

@@ -2,6 +2,8 @@ package org.jetbrains.research.boolector;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class BoolectorNodeTest {
@@ -141,8 +143,8 @@ public class BoolectorNodeTest {
         BoolectorSat.getBoolectorSat();
         boolectorAssert("000101", ite);
         assertEquals("test", bitvec.getSymbol());
-        assertFalse(x.isBoolConst());
-        assertFalse(bitvec.isBitvecConst());
+        assertFalse(x.isBoolNode());
+        assertTrue(bitvec.isBitvecNode());
         int i = 0;
         try {
             bitvec.toArrayNode();
