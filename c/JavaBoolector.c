@@ -253,6 +253,14 @@ Java_org_jetbrains_research_boolector_Native_sgte(JNIEnv *env, jobject jobj, jlo
 }
 
 JNIEXPORT jlong JNICALL
+Java_org_jetbrains_research_boolector_Native_ugt(JNIEnv *env, jobject jobj, jlong jnode_first_ref,
+                                                 jlong jnode_second_ref) {
+    BoolectorNode *first_node = (BoolectorNode *) jnode_first_ref;
+    BoolectorNode *second_node = (BoolectorNode *) jnode_second_ref;
+    return (jlong) boolector_ugt(btor, first_node, second_node);
+}
+
+JNIEXPORT jlong JNICALL
 Java_org_jetbrains_research_boolector_Native_slt(JNIEnv *env, jobject jobj, jlong jnode_first_ref,
                                                  jlong jnode_second_ref) {
     BoolectorNode *first_node = (BoolectorNode *) jnode_first_ref;

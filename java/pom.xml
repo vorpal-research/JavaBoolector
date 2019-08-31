@@ -24,7 +24,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <target name="anytarget">
+                            <target name="Ant">
                                 <ant antfile="build.xml"/>
                             </target>
                         </configuration>
@@ -36,12 +36,8 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <target name="Boolector update">
-                                <exec executable="git" dir="${boolector.c.dir}/boolector">
-                                    <arg value="pull"/>
-                                    <arg value="origin"/>
-                                    <arg value="master"/>
-                                </exec>
+                            <target name="Remove boolector">
+                                <delete dir="${boolector.c.dir}/boolector/build/"/>
                             </target>
                         </configuration>
                     </execution>

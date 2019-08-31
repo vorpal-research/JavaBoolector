@@ -124,6 +124,10 @@ public class BitvecNode extends BoolectorNode {
         return new BoolNode(Native.sgt(ref, bvNode.ref));
     }
 
+    public BoolNode ugt(BitvecNode bvNode) {
+        return new BoolNode(Native.ugt(ref, bvNode.ref));
+    }
+
     public BoolNode sgte(BitvecNode bvNode) {
         return new BoolNode(Native.sgte(ref, bvNode.ref));
     }

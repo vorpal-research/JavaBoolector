@@ -73,6 +73,14 @@ JNIEXPORT jboolean JNICALL Java_org_jetbrains_research_boolector_Native_isArrayS
 
 /*
  * Class:     org_jetbrains_research_boolector_Native
+ * Method:    getWidth
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_getWidth
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
  * Method:    not
  * Signature: (J)J
  */
@@ -302,6 +310,14 @@ JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_zero
  */
 JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_constBitvec
   (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    isBoolSort
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_jetbrains_research_boolector_Native_isBoolSort
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     org_jetbrains_research_boolector_Native
@@ -542,6 +558,14 @@ JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_bitvecAssig
  */
 JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_matchNodeByName
   (JNIEnv *, jclass, jstring);
+
+/*
+ * Class:     org_jetbrains_research_boolector_Native
+ * Method:    ugt
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_jetbrains_research_boolector_Native_ugt
+  (JNIEnv *, jclass, jlong, jlong);
 
 #ifdef __cplusplus
 }
