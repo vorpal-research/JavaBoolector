@@ -26,24 +26,12 @@ public class Btor {
         Native.btorRelease();
     }
 
-    public List<String> dumpSmt2() {
-        Native.dumpSmt2();
-        return reader(Paths.get("dumpSmt2.txt"));
+    public String dumpSmt2() {
+        return Native.dumpSmt2();
     }
 
-    public List<String> printModel() {
-        Native.printModel();
-        return reader(Paths.get("model.txt"));
+    public String printModel() {
+        return Native.printModel();
     }
 
-    private List<String> reader(Path file) {
-        List<String> text = new ArrayList<>();
-        try {
-            text = Files.readAllLines(file);
-            Files.delete(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return text;
-    }
 }

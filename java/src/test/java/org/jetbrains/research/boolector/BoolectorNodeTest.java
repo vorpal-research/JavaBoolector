@@ -161,8 +161,11 @@ public class BoolectorNodeTest {
         BoolNode x = BoolNode.constBool(true);
         x.assertForm();
         BoolectorSat.getBoolectorSat();
-        assertEquals("(model )", btor.printModel().get(0));
-        assertEquals("(set-logic QF_BV)", btor.dumpSmt2().get(0));
+        assertEquals("(model )\n", btor.printModel());
+        assertEquals("(set-logic QF_BV)\n" +
+                "(assert true)\n" +
+                "(check-sat)\n" +
+                "(exit)\n", btor.dumpSmt2());
         btor.btorRelease();
     }
 

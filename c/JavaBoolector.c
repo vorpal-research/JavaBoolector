@@ -7,6 +7,7 @@
 #include <btorlog.h>
 #include <stdlib.h>
 #include <math.h>
+#include "jniFileRead.c"
 
 Btor *btor;
 
@@ -35,16 +36,20 @@ JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_simplify(JNI
     return (jint) boolector_simplify(btor);
 }
 
-JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_printModel(JNIEnv *env, jobject jobj) {
-    FILE* print_model = fopen("model.txt","wt");
-    boolector_print_model(btor, "smt2", print_model);
-    fclose(print_model);
+JNIEXPORT jstring JNICALL Java_org_jetbrains_research_boolector_Native_printModel(JNIEnv *env, jobject jobj) {
+    FILE *tmp_model = tmpfile();
+    boolector_print_model(btor, "smt2", tmp_model);
+    jstring model = readFileContent(env, tmp_model);
+    fclose(tmp_model);
+    return model;
 }
 
-JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2(JNIEnv *env, jobject jobj) {
-    FILE* print_model = fopen("dumpSmt2.txt","wt");
-    boolector_dump_smt2(btor, print_model);
-    fclose(print_model);
+JNIEXPORT jstring JNICALL Java_org_jetbrains_research_boolector_Native_dumpSmt2(JNIEnv *env, jobject jobj) {
+    FILE *tmp_dump = tmpfile();
+    boolector_dump_smt2(btor, tmp_dump);
+    jstring model = readFileContent(env, tmp_dump);
+    fclose(tmp_dump);
+    return model;
 }
 
 JNIEXPORT void JNICALL Java_org_jetbrains_research_boolector_Native_btorRelease(JNIEnv *env, jobject jobj) {
@@ -69,7 +74,7 @@ Java_org_jetbrains_research_boolector_Native_var(JNIEnv *env, jobject jobj, jlon
 JNIEXPORT jlong JNICALL
 Java_org_jetbrains_research_boolector_Native_matchNodeByName(JNIEnv *env, jobject jobj, jstring jsymbol) {
     const char *str = (*env)->GetStringUTFChars(env, jsymbol, 0);
-    BoolectorNode *node = boolector_match_node_by_symbol(btor,str);
+    BoolectorNode *node = boolector_match_node_by_symbol(btor, str);
     (*env)->ReleaseStringUTFChars(env, jsymbol, str);
     return (jlong) node;
 }
@@ -105,17 +110,18 @@ Java_org_jetbrains_research_boolector_Native_getBits(JNIEnv *env, jobject jobj, 
 }
 
 JNIEXPORT jlong JNICALL
-Java_org_jetbrains_research_boolector_Native_bitvecAssignment(JNIEnv *env, jobject jobj, jlong jnode_ref) { //почему работает с отрицательными числами?
+Java_org_jetbrains_research_boolector_Native_bitvecAssignment(JNIEnv *env, jobject jobj,
+                                                              jlong jnode_ref) { //почему работает с отрицательными числами?
     BoolectorNode *node = (BoolectorNode *) jnode_ref;
     int size = boolector_get_width(btor, node);
     const char *bits = boolector_bv_assignment(btor, node);
     long long number = 0;
     long long power = 1;
-    for (int i = size-1; i >= 0; i--) {
+    for (int i = size - 1; i >= 0; i--) {
         if (bits[i] == '1') number += power;
         power *= 2;
     }
-   // printf("%s\n%lli\n", bits, number);
+    // printf("%s\n%lli\n", bits, number);
     boolector_free_bv_assignment(btor, bits);
     return (jlong) number;
 }
@@ -539,8 +545,6 @@ Java_org_jetbrains_research_boolector_Native_getIndexWidth(JNIEnv *env, jobject 
     int width_index = boolector_get_index_width(btor, array_node);
     return width_index;
 }
-
-
 
 
 JNIEXPORT jboolean JNICALL
