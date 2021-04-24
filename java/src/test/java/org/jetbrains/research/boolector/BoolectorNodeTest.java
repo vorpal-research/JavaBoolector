@@ -152,20 +152,21 @@ public class BoolectorNodeTest {
             ++i;
         }
         assertEquals(1, i);
+
         btor.btorRelease();
     }
 
     @Test
-    public void tempFiles() {
+    public void printerTest() {
         Btor btor = new Btor();
         BoolNode x = BoolNode.constBool(true);
         x.assertForm();
         BoolectorSat.getBoolectorSat();
-        assertEquals("(model )\n", btor.printModel());
+        assertEquals("(\n)", btor.printModel());
         assertEquals("(set-logic QF_BV)\n" +
                 "(assert true)\n" +
                 "(check-sat)\n" +
-                "(exit)\n", btor.dumpSmt2());
+                "(exit)", btor.dumpSmt2());
         btor.btorRelease();
     }
 

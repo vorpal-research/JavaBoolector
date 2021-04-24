@@ -7,7 +7,7 @@
 #include <btorlog.h>
 #include <stdlib.h>
 #include <math.h>
-#include "jniFileRead.c"
+// #include "jniFileRead.c"
 
 Btor *btor;
 
@@ -34,6 +34,20 @@ JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_getSat(JNIEn
 
 JNIEXPORT jint JNICALL Java_org_jetbrains_research_boolector_Native_simplify(JNIEnv *env, jobject jobj) {
     return (jint) boolector_simplify(btor);
+}
+
+static jstring readFileContent(JNIEnv *env, FILE* file) {
+	rewind(file);
+	fseek(file, 0, SEEK_END);
+	long size = ftell(file);
+	rewind(file);
+	
+	char* fcontent = (char*) malloc(size);
+	fread(fcontent, sizeof(char), size, file);
+	fcontent[size - 1] = 0;
+	jstring result = (*env)->NewStringUTF(env, fcontent);
+	free(fcontent);
+	return result;
 }
 
 JNIEXPORT jstring JNICALL Java_org_jetbrains_research_boolector_Native_printModel(JNIEnv *env, jobject jobj) {
