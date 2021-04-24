@@ -1,6 +1,8 @@
 # JavaBoolector
 
-JavaBoolector allows you to call [Boolector](https://github.com/boolector/boolector) from Java
+JavaBoolector allows you to call [Boolector](https://github.com/boolector/boolector/tree/0dba411bebb9ac70fd03de68f984ccb5bd3e1a03) from Java.
+
+*We are using Boolector version 3.2.1*
 
 ## Build
 
