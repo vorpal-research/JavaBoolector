@@ -32,6 +32,7 @@
 
                     <execution>
                         <id>default-cli</id>
+						<phase>pre-clean</phase>
                         <goals>
                             <goal>run</goal>
                         </goals>

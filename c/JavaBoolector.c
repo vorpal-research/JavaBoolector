@@ -7,7 +7,6 @@
 #include <btorlog.h>
 #include <stdlib.h>
 #include <math.h>
-// #include "jniFileRead.c"
 
 Btor *btor;
 
