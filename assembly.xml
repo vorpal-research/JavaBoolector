@@ -1,0 +1,17 @@
+<assembly>
+    <id>sources</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>${project.basedir}</directory>
+            <excludes>
+                <exclude>target/**</exclude>
+                <exclude>lib/**</exclude>
+                <exclude>.idea/**</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
