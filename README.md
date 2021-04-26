@@ -1,24 +1,40 @@
-# JavaBoolector
+JavaBoolector
+===============================================================================
 
-JavaBoolector allows you to call [Boolector](https://github.com/boolector/boolector/tree/0dba411bebb9ac70fd03de68f984ccb5bd3e1a03) from Java.
+Java bindings for [Boolector](https://github.com/boolector/boolector) SMT solver
 
-*We are using Boolector version 3.2.1*
+Dependencies
+-------------------------------------------------------------------------------
+[Boolector](https://github.com/boolector/boolector) version 3.2.0 should be
+installed in the system
 
-## Build
+For running on Arch Linux you need to install [boolector](https://aur.archlinux.org/packages/boolector/)
+package from AUR.
 
-Build jar with all the dependencies:
-
-```shell
-$ mvn clean package
+Build
+-------------------------------------------------------------------------------
+Build and install native libraries:
+```
+make
+make install
 ```
 
-## Adding new bindings
-
-    1) Add your native method to the Native class
-	
-	2) Generate JavaBoolector.h:
-```shell
-$ cd JavaBoolector/java
-$ ./gen_native_h.sh
+Build java bindings library:
 ```
-	3) And implement your method in JavaBoolector.c
+mvn clean package
+```
+
+Build jar with sources:
+```
+mvn sources:jar
+```
+
+Build tar.gz with sources:
+```
+mvn clean assembly:assembly
+```
+
+Install
+-------------------------------------------------------------------------------
+
+You can install [boolector-java](https://aur.archlinux.org/packages/boolector-java/) package from AUR.
