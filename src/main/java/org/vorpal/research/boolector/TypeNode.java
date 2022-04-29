@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public enum TypeNode {
     ARRAYNODE,

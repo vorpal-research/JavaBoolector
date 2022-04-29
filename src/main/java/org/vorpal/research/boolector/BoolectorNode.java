@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public abstract class BoolectorNode extends BoolectorObject {
     protected static int numberOfNames;

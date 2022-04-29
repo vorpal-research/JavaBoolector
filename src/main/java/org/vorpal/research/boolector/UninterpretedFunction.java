@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public class UninterpretedFunction extends BoolectorFunction {
     private final String name;

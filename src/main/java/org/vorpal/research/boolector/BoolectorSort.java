@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public abstract class BoolectorSort extends BoolectorObject {
     private Integer width;

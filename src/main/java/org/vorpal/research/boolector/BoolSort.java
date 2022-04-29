@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public class BoolSort extends BoolectorSort {
     private static final int BOOL_WIDTH = 1;

@@ -26,7 +26,7 @@ $(OBJECTS): $(SOURCES)
 	$(CC) $(CFLAGS) $< -o $@
 
 headers:
-	javah -d $(SOURCES_DIR) -classpath $(BASE_DIR)/src/main/java -force org.jetbrains.research.boolector.Native
+	javah -d $(SOURCES_DIR) -classpath $(BASE_DIR)/src/main/java -force org.vorpal.research.boolector.Native
 
 clean:
 	rm -rfi $(OBJECTS_DIR) $(EXECUTABLE)

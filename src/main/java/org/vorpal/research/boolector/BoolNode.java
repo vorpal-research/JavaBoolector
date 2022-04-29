@@ -1,4 +1,4 @@
-package org.jetbrains.research.boolector;
+package org.vorpal.research.boolector;
 
 public class BoolNode extends BoolectorNode {
     BoolNode(Btor btor, long ref) {
@@ -48,7 +48,7 @@ public class BoolNode extends BoolectorNode {
 
     @Override
     public BitvecNode toBitvecNode() {
-        return (BitvecNode) BitvecNode.create(this.btor, this.ref, this.name);
+        return (BitvecNode) create(this.btor, this.ref, this.name);
     }
 
     @Override
