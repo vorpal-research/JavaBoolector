@@ -147,7 +147,7 @@ public class BoolectorNodeTest {
         BoolNode x = BoolNode.constBool(btor, true);
         x.assertForm();
         btor.check();
-        assertEquals("(model )\n", btor.printModel());
+//        assertEquals("(model )\n", btor.printModel());
         assertEquals("(set-logic QF_BV)\n" +
                 "(assert true)\n" +
                 "(check-sat)\n" +
