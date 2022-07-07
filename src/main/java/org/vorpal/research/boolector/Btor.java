@@ -34,12 +34,15 @@ public class Btor {
     }
 
     static {
-        try {
-            NativeUtils.loadLibrary("boolector");
-            NativeUtils.loadLibrary("boolector-java");
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("Unable to load dynamic libraries");
+        boolean skipLoad = Boolean.parseBoolean(System.getProperty("boolector.skipLibraryLoad", "false"));
+        if (!skipLoad) {
+            try {
+                NativeUtils.loadLibrary("boolector");
+                NativeUtils.loadLibrary("boolector-java");
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new IllegalStateException("Unable to load dynamic libraries");
+            }
         }
     }
 

@@ -6,7 +6,7 @@
 
     <groupId>org.vorpal.research</groupId>
     <artifactId>boolector-java</artifactId>
-    <version>3.2.6</version>
+    <version>3.2.7</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
